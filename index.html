@@ -168,26 +168,37 @@ function pad(n){
 
 function updateClock(){
 
-    var now=new Date();
+    var now = new Date();
 
-    document.getElementById("clock").innerHTML=
-        pad(now.getHours())+":"+
-        pad(now.getMinutes())+":"+
+    document.getElementById("clock").innerHTML =
+        pad(now.getHours()) + ":" +
+        pad(now.getMinutes()) + ":" +
         pad(now.getSeconds());
 
-    document.getElementById("date").innerHTML=
+    document.getElementById("date").innerHTML =
         now.toDateString();
 
-    var start=new Date(now.getFullYear(),0,0);
+    var start = new Date(now.getFullYear(),0,0);
 
-    document.getElementById("day").innerHTML=
+    document.getElementById("day").innerHTML =
         Math.floor((now-start)/86400000);
 
-    var christmas=new Date(now.getFullYear(),11,25);
+    var christmas = new Date(now.getFullYear(),11,25);
 
-    document.getElementById("christmas").innerHTML=
+    document.getElementById("christmas").innerHTML =
         Math.ceil((christmas-now)/86400000);
 
+    var date = new Date(now.getTime());
+    date.setHours(0,0,0,0);
+    date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
+
+    var week1 = new Date(date.getFullYear(),0,4);
+
+    document.getElementById("week").innerHTML =
+        1 + Math.round(
+          ((date.getTime() - week1.getTime()) / 86400000
+          - 3 + ((week1.getDay() + 6) % 7)) / 7
+        );
 }
 
 function loadNews(){
