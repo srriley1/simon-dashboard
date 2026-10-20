@@ -316,8 +316,7 @@
         document.getElementById('fpl-manager-name').textContent =
           ((data.player_first_name || '') + ' ' + (data.player_last_name || '')).replace(/^\s+|\s+$/g, '');
         document.getElementById('fpl-points').textContent = formatNumber(data.summary_overall_points);
-        document.getElementById('fpl-lastgw').textContent =
-    formatNumber(data.summary_event_points);
+        document.getElementById('fpl-lastgw').textContent = formatNumber(data.summary_event_points);
         document.getElementById('fpl-gameweek').textContent = data.current_event || '--';
         document.getElementById('fpl-status').textContent = 'Live FPL data | Team ID: ' + FPL_TEAM_ID;
       }
