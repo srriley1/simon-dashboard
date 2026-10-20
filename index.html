@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,29 +21,17 @@
       overflow-x: hidden;
     }
 
-   body {
-  padding: 10px;
-}
+    body {
+      padding: 10px;
+      zoom: 0.80;
+    }
 
-.page {
-  width: 125%;
-  max-width: 1920px;
-  margin: 0 auto;
-  transform: scale(0.80);
-  transform-origin: top left;
-}
+    .page {
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
 
-   body {
-  padding: 10px;
-}
-
-.page {
-  width: 125%;
-  max-width: 1920px;
-  margin: 0 auto;
-  transform: scale(0.80);
-  transform-origin: top left;
-}
 
     .header {
       display: -webkit-box;
@@ -56,43 +43,45 @@
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      padding: 22px 28px;
-      margin-bottom: 20px;
-      border-radius: 18px;
+      padding: 18px 24px;
+      margin-bottom: 14px;
+      border-radius: 14px;
       background: #00472b;
-      border-left: 8px solid #91d6a3;
-      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+      border-left: 7px solid #91d6a3;
+      box-shadow: 0 8px 20px rgba(0,0,0,.22);
     }
 
-    .title { margin: 0; font-size: 34px; font-weight: 700; }
-    .subtitle { margin-top: 7px; color: #c2ddcb; font-size: 17px; }
+    .title { margin: 0; font-size: 32px; font-weight: 700; }
+    .subtitle { margin-top: 5px; color: #c2ddcb; font-size: 16px; }
     .time-wrap { text-align: right; }
-    #clock { font-size: 58px; line-height: 1; font-weight: 700; letter-spacing: 1px; }
-    #date { margin-top: 8px; color: #c2ddcb; font-size: 18px; }
-
+    #clock { font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: 1px; }
+    #date { margin-top: 6px; color: #c2ddcb; font-size: 17px; }
     .row {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      margin: 0 -10px 20px;
+      margin: 0 -7px 14px;
     }
 
-
-    .col { width: 50%; padding: 0 10px; }
-
+    .col {
+      width: 50%;
+      padding: 0 7px;
+    }
     .card {
       height: 100%;
-      min-height: 270px;
-      padding: 24px;
-      border-radius: 18px;
+      min-height: 225px;
+      padding: 20px;
+      border-radius: 14px;
       background: #0b442b;
       border: 1px solid #26704b;
-      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+      box-shadow: 0 8px 20px rgba(0,0,0,.22);
     }
 
-
-    .card h2 { margin: 0 0 18px; color: #fff; font-size: 27px; }
-
+    .card h2 {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 24px;
+    }
     .weather-main {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -102,34 +91,27 @@
       align-items: center;
     }
 
-
-    #weather-icon { width: 90px; font-size: 74px; line-height: 1; }
-    #temperature { font-size: 66px; font-weight: 700; }
-    #weather-description { margin-top: 8px; color: #d7ecde; font-size: 22px; }
-
-
+    #weather-icon { width: 76px; font-size: 60px; line-height: 1; }
+    #temperature { font-size: 52px; font-weight: 700; }
+    #weather-description { margin-top: 6px; color: #d7ecde; font-size: 19px; }
     .weather-details {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      margin-top: 24px;
+      margin-top: 18px;
       color: #e1f1e7;
-      font-size: 18px;
+      font-size: 17px;
     }
 
-
-    .weather-details div { margin-right: 34px; }
-
+    .weather-details div { margin-right: 30px; }
     .news-list { margin: 0; padding: 0; list-style: none; }
 
-
     .news-list li {
-      padding: 13px 0;
+      padding: 9px 0;
       border-bottom: 1px solid #347255;
-      font-size: 18px;
-      line-height: 1.35;
+      font-size: 16px;
+      line-height: 1.25;
     }
-
 
     .news-list li:first-child { padding-top: 0; }
     .news-list li:last-child { border-bottom: 0; }
@@ -139,37 +121,32 @@
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      margin: 0 -7px;
+      margin: 0 -5px;
     }
-
 
     .tile {
       width: 33.333%;
-      margin: 0 7px;
-      padding: 18px 10px;
-      border-radius: 14px;
+      margin: 0 5px;
+      padding: 14px 8px;
+      border-radius: 11px;
       background: #145b3b;
       text-align: center;
       border: 1px solid #2b7652;
     }
 
-
-    .tile .label { color: #bfddca; font-size: 15px; }
-    .tile .value { margin-top: 8px; font-size: 25px; font-weight: 700; }
-
-    .fpl-name { margin: 22px 0 5px; font-size: 24px; font-weight: 700; }
-    .fpl-manager { color: #c2ddcb; font-size: 17px; }
-    .fpl-status { margin-top: 17px; color: #d7ecde; font-size: 16px; }
-
-    .footer { color: #a7cdb7; text-align: center; font-size: 14px; }
-    .error { color: #ffd18a; font-size: 17px; line-height: 1.45; }
-
+    .tile .label { color: #bfddca; font-size: 14px; }
+    .tile .value { margin-top: 6px; font-size: 23px; font-weight: 700; }
+    .fpl-name { margin: 16px 0 4px; font-size: 21px; font-weight: 700; }
+    .fpl-manager { color: #c2ddcb; font-size: 15px; }
+    .fpl-status { margin-top: 12px; color: #d7ecde; font-size: 14px; }
+    .footer { color: #a7cdb7; text-align: center; font-size: 13px; }
+    .error { color: #ffd18a; font-size: 16px; line-height: 1.4; }
     @media (max-width: 900px) {
-      body { padding: 12px; }
+      body { padding: 8px; zoom: 1; }
       .header, .row { display: block; }
-      .time-wrap { margin-top: 20px; text-align: left; }
-      .col { width: 100%; margin-bottom: 20px; }
-      #clock { font-size: 46px; }
+      .time-wrap { margin-top: 15px; text-align: left; }
+      .col { width: 100%; margin-bottom: 14px; }
+      #clock { font-size: 40px; }
     }
   </style>
 </head>
@@ -181,7 +158,7 @@
         <div class="subtitle">Live home dashboard</div>
       </div>
       <div class="time-wrap">
-        <div id="clock">--:--</div>
+        <div id="clock">--:--:--</div>
         <div id="date">Loading date...</div>
       </div>
     </header>
@@ -255,7 +232,7 @@
               </div>
               <div class="tile">
                 <div class="label">Next refresh</div>
-                <div id="refresh-countdown" class="value">--:--</div>
+                <div id="refresh-countdown" class="value">15:00</div>
               </div>
             </div>
           </div>
@@ -268,39 +245,42 @@
     </footer>
   </div>
 
-  <script>
+  <script type="text/javascript">
     (function () {
-      'use strict';
-
       var REFRESH_SECONDS = 15 * 60;
       var secondsRemaining = REFRESH_SECONDS;
       var FPL_TEAM_ID = 9473645;
       var FPL_WORKER_URL = 'https://fpl-api-worker.73rdscoutnotices.workers.dev';
+
+
+      function byId(id) {
+        return document.getElementById(id);
+      }
+
+
       function pad(value) {
         return value < 10 ? '0' + value : String(value);
       }
 
-
       function formatNumber(value) {
-        if (value === null || value === undefined) return '--';
-        return Number(value).toLocaleString('en-GB');
+        if (value === null || typeof value === 'undefined') return '--';
+        var number = String(value);
+        return number.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       }
 
       function updateClock() {
         var now = new Date();
-        document.getElementById('clock').textContent =
-          pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
-        document.getElementById('date').textContent = now.toLocaleDateString('en-GB', {
-          weekday: 'long',
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        });
+        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+
+        byId('clock').innerHTML = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        byId('date').innerHTML = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
       }
 
       function getDayOfYear(date) {
         var start = new Date(date.getFullYear(), 0, 0);
-        return Math.floor((date - start) / 86400000);
+        return Math.floor((date.getTime() - start.getTime()) / 86400000);
       }
 
       function getWeekNumber(date) {
@@ -308,52 +288,58 @@
         var day = d.getUTCDay() || 7;
         d.setUTCDate(d.getUTCDate() + 4 - day);
         var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        return Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
       }
 
       function updateUsefulInfo() {
         var now = new Date();
-        document.getElementById('week-number').textContent = getWeekNumber(now);
-        document.getElementById('day-number').textContent = getDayOfYear(now);
+        byId('week-number').innerHTML = getWeekNumber(now);
+        byId('day-number').innerHTML = getDayOfYear(now);
       }
 
       function weatherDescription(code) {
         var descriptions = {
-          0: 'Clear sky',
-          1: 'Mainly clear',
-          2: 'Partly cloudy',
-          3: 'Overcast',
-          45: 'Foggy',
-          48: 'Freezing fog',
-          51: 'Light drizzle',
-          53: 'Drizzle',
-          55: 'Heavy drizzle',
-          61: 'Light rain',
-          63: 'Rain',
-          65: 'Heavy rain',
-          71: 'Light snow',
-          73: 'Snow',
-          75: 'Heavy snow',
-          80: 'Light showers',
-          81: 'Showers',
-          82: 'Heavy showers',
-          95: 'Thunderstorm',
-          96: 'Thunderstorm with hail',
-          99: 'Severe thunderstorm with hail'
+          0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Freezing fog',
+          51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
+          71:'Light snow',73:'Snow',75:'Heavy snow',80:'Light showers',81:'Showers',82:'Heavy showers',
+          95:'Thunderstorm',96:'Thunderstorm with hail',99:'Severe thunderstorm with hail'
         };
         return descriptions[code] || 'Current conditions';
       }
 
       function weatherIcon(code, isDay) {
-        if (code === 0) return isDay ? '☀' : '☾';
-        if (code === 1 || code === 2) return '⛅';
-        if (code === 3) return '☁';
-        if (code === 45 || code === 48) return '≋';
-        if ((code >= 51 && code <= 65) || (code >= 80 && code <= 82)) return '☂';
-        if (code >= 71 && code <= 75) return '❄';
-        if (code >= 95) return 'ϟ';
-        return '°';
+        if (code === 0) return isDay ? 'SUN' : 'MOON';
+        if (code === 1 || code === 2) return 'SUN/CLOUD';
+        if (code === 3) return 'CLOUD';
+        if (code === 45 || code === 48) return 'FOG';
+        if ((code >= 51 && code <= 65) || (code >= 80 && code <= 82)) return 'RAIN';
+        if (code >= 71 && code <= 75) return 'SNOW';
+        if (code >= 95) return 'STORM';
+        return 'TEMP';
       }
+
+      function getJson(url, onSuccess, onFailure) {
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.onreadystatechange = function () {
+          if (request.readyState === 4) {
+            if (request.status >= 200 && request.status < 300) {
+              try {
+                onSuccess(JSON.parse(request.responseText));
+              } catch (error) {
+                onFailure('Invalid JSON response');
+              }
+            } else {
+              onFailure('Request failed: ' + request.status);
+            }
+          }
+        };
+        request.onerror = function () {
+          onFailure('Network error');
+        };
+        request.send(null);
+      }
+
 
       function loadWeather() {
         var url = 'https://api.open-meteo.com/v1/forecast' +
@@ -361,115 +347,82 @@
           '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day' +
           '&temperature_unit=celsius&wind_speed_unit=mph&timezone=Europe%2FLondon';
 
-        fetch(url)
-          .then(function (response) {
-            if (!response.ok) throw new Error('Weather request failed');
-            return response.json();
-          })
-          .then(function (data) {
-            var current = data.current;
-            document.getElementById('temperature').textContent = Math.round(current.temperature_2m) + '°C';
-            document.getElementById('feels-like').textContent = Math.round(current.apparent_temperature) + '°C';
-            document.getElementById('wind-speed').textContent = Math.round(current.wind_speed_10m) + ' mph';
-            document.getElementById('weather-description').textContent = weatherDescription(current.weather_code);
-            document.getElementById('weather-icon').textContent = weatherIcon(current.weather_code, current.is_day === 1);
-          })
-          .catch(function (error) {
-            console.log('Weather error:', error);
-            document.getElementById('weather-content').innerHTML =
-              '<p class="error">Weather could not be loaded. It will retry at the next refresh.</p>';
-          });
+        getJson(url, function (data) {
+          var current = data.current;
+          byId('temperature').innerHTML = Math.round(current.temperature_2m) + '°C';
+          byId('feels-like').innerHTML = Math.round(current.apparent_temperature) + '°C';
+          byId('wind-speed').innerHTML = Math.round(current.wind_speed_10m) + ' mph';
+          byId('weather-description').innerHTML = weatherDescription(current.weather_code);
+          byId('weather-icon').innerHTML = weatherIcon(current.weather_code, current.is_day === 1);
+        }, function () {
+          byId('weather-content').innerHTML = '<p class="error">Weather unavailable. Retrying at the next refresh.</p>';
+        });
       }
 
       function loadNews() {
         var feed = 'https://feeds.bbci.co.uk/news/rss.xml';
         var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed);
 
-        fetch(url)
-          .then(function (response) {
-            if (!response.ok) throw new Error('News request failed');
-            return response.json();
-          })
-          .then(function (data) {
-            if (data.status !== 'ok' || !data.items || !data.items.length) {
-              throw new Error('No news returned');
-            }
-
-
-            var list = document.getElementById('news-list');
-            list.innerHTML = '';
-
-
-            for (var i = 0; i < Math.min(data.items.length, 6); i += 1) {
-              var listItem = document.createElement('li');
-              var link = document.createElement('a');
-              link.href = data.items[i].link;
-              link.target = '_blank';
-              link.rel = 'noopener noreferrer';
-              link.textContent = data.items[i].title;
-              listItem.appendChild(link);
-              list.appendChild(listItem);
-            }
-          })
-          .catch(function (error) {
-            console.log('News error:', error);
-            document.getElementById('news-list').innerHTML =
-              '<li class="error">Headlines could not be loaded. They will retry at the next refresh.</li>';
-          });
+        getJson(url, function (data) {
+          var list = byId('news-list');
+          var html = '';
+          var count;
+          var i;
+          if (!data.items || !data.items.length) {
+            throw new Error('No news');
+          }
+          count = data.items.length < 6 ? data.items.length : 6;
+          for (i = 0; i < count; i += 1) {
+            html += '<li>' + data.items[i].title + '</li>';
+          }
+          list.innerHTML = html;
+        }, function () {
+          byId('news-list').innerHTML = '<li class="error">Headlines unavailable. Retrying at the next refresh.</li>';
+        });
       }
 
       function displayFPL(data) {
-        document.getElementById('fpl-team-name').textContent = data.name || 'My FPL team';
-        document.getElementById('fpl-manager-name').textContent =
-          ((data.player_first_name || '') + ' ' + (data.player_last_name || '')).replace(/^\s+|\s+$/g, '');
-        document.getElementById('fpl-points').textContent = formatNumber(data.summary_overall_points);
-        document.getElementById('fpl-lastgw').textContent = formatNumber(data.summary_event_points);
-        document.getElementById('fpl-gameweek').textContent = data.current_event || '--';
-        document.getElementById('fpl-status').textContent =
-          'Live FPL data | Team ID: ' + FPL_TEAM_ID;
+        byId('fpl-team-name').innerHTML = data.name || 'My FPL team';
+        byId('fpl-manager-name').innerHTML = (data.player_first_name || '') + ' ' + (data.player_last_name || '');
+        byId('fpl-points').innerHTML = formatNumber(data.summary_overall_points);
+        byId('fpl-lastgw').innerHTML = formatNumber(data.summary_event_points);
+        byId('fpl-gameweek').innerHTML = data.current_event || '--';
+        byId('fpl-status').innerHTML = 'Live FPL data | Team ID: ' + FPL_TEAM_ID;
       }
 
       function loadFPL() {
-        fetch(FPL_WORKER_URL)
-          .then(function (response) {
-            if (!response.ok) throw new Error('Worker request failed');
-            return response.json();
-          })
-          .then(function (data) {
-            displayFPL(data);
-          })
-          .catch(function (error) {
-            console.log('FPL error:', error);
-            document.getElementById('fpl-team-name').textContent = 'FPL data unavailable';
-            document.getElementById('fpl-manager-name').textContent = '';
-            document.getElementById('fpl-status').textContent = 'Unable to reach FPL Worker';
-          });
+        getJson(FPL_WORKER_URL, function (data) {
+          displayFPL(data);
+        }, function () {
+          byId('fpl-team-name').innerHTML = 'FPL data unavailable';
+          byId('fpl-manager-name').innerHTML = '';
+          byId('fpl-status').innerHTML = 'Unable to reach FPL Worker';
+        });
       }
 
       function updateCountdown() {
         secondsRemaining -= 1;
-
-
         if (secondsRemaining <= 0) {
-          window.location.reload();
-          return;
+          secondsRemaining = REFRESH_SECONDS;
+          loadWeather();
+          loadNews();
+          loadFPL();
         }
-
-
-        document.getElementById('refresh-countdown').textContent =
-          pad(Math.floor(secondsRemaining / 60)) + ':' + pad(secondsRemaining % 60);
+        byId('refresh-countdown').innerHTML = pad(Math.floor(secondsRemaining / 60)) + ':' + pad(secondsRemaining % 60);
       }
 
       updateClock();
       updateUsefulInfo();
-      loadWeather();
-      loadNews();
-      loadFPL();
-      document.getElementById('refresh-countdown').textContent = '15:00';
-
-
+      byId('refresh-countdown').innerHTML = '15:00';
       setInterval(updateClock, 1000);
       setInterval(updateCountdown, 1000);
+
+
+      setTimeout(function () {
+        loadWeather();
+        loadNews();
+        loadFPL();
+      }, 500);
     }());
   </script>
 </body>
