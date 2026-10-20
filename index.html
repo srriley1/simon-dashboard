@@ -321,25 +321,36 @@
         document.getElementById('fpl-status').textContent = 'Live FPL data | Team ID: ' + FPL_TEAM_ID;
       }
 
-      function loadFPL() {
-        var directUrl = 'https://fantasy.premierleague.com/api/entry/' + FPL_TEAM_ID + '/';
-        var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(directUrl);
+     function loadFPL() {
 
-        fetch(directUrl).then(function (r) {
-          if (!r.ok) throw new Error('Direct FPL request blocked');
-          return r.json();
-        }).then(displayFPL).catch(function () {
-          return fetch(proxyUrl).then(function (r) {
-            if (!r.ok) throw new Error('FPL proxy request failed');
-            return r.json();
-          }).then(displayFPL);
-        }).catch(function () {
-          document.getElementById('fpl-team-name').textContent = 'FPL data unavailable';
-          document.getElementById('fpl-manager-name').textContent = '';
-          document.getElementById('fpl-status').textContent =
-            'The TV browser blocked the live feed. Team ID: ' + FPL_TEAM_ID;
-        });
+  fetch('https://fpl-api-worker.73rdscoutnotices.workers.dev')
+
+    .then(function(response) {
+
+      if (!response.ok) {
+        throw new Error('Worker request failed');
       }
+
+      return response.json();
+    })
+
+    .then(displayFPL)
+
+    .catch(function(error) {
+
+      console.log(error);
+
+      document.getElementById('fpl-team-name').textContent =
+        'FPL data unavailable';
+
+      document.getElementById('fpl-manager-name').textContent =
+        '';
+
+      document.getElementById('fpl-status').textContent =
+        'Unable to reach FPL Worker';
+
+    });
+}
 
       function updateCountdown() {
         secondsRemaining -= 1;
