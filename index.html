@@ -32,7 +32,6 @@
       margin: 0 auto;
     }
 
-
     .header {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -54,8 +53,10 @@
     .title { margin: 0; font-size: 32px; font-weight: 700; }
     .subtitle { margin-top: 5px; color: #c2ddcb; font-size: 16px; }
     .time-wrap { text-align: right; }
-    #clock { font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: 1px; }
+    #clock { font-size: 48px; line-height: 1; font-weight: 700; }
     #date { margin-top: 6px; color: #c2ddcb; font-size: 17px; }
+
+
     .row {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -63,10 +64,9 @@
       margin: 0 -7px 14px;
     }
 
-    .col {
-      width: 50%;
-      padding: 0 7px;
-    }
+    .col { width: 50%; padding: 0 7px; }
+
+
     .card {
       height: 100%;
       min-height: 225px;
@@ -77,46 +77,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,.22);
     }
 
-    .card h2 {
-      margin: 0 0 14px;
-      color: #fff;
-      font-size: 24px;
-    }
-    .weather-main {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-    }
-
-    #weather-icon { width: 76px; font-size: 60px; line-height: 1; }
-    #temperature { font-size: 52px; font-weight: 700; }
-    #weather-description { margin-top: 6px; color: #d7ecde; font-size: 19px; }
-    .weather-details {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      margin-top: 18px;
-      color: #e1f1e7;
-      font-size: 17px;
-    }
-
-    .weather-details div { margin-right: 30px; }
-    .news-list { margin: 0; padding: 0; list-style: none; }
-
-    .news-list li {
-      padding: 9px 0;
-      border-bottom: 1px solid #347255;
-      font-size: 16px;
-      line-height: 1.25;
-    }
-
-    .news-list li:first-child { padding-top: 0; }
-    .news-list li:last-child { border-bottom: 0; }
-    .news-list a { color: #fff; text-decoration: none; }
-
+    .card h2 { margin: 0 0 14px; color: #fff; font-size: 24px; }
     .tile-row {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -127,7 +88,7 @@
     .tile {
       width: 33.333%;
       margin: 0 5px;
-      padding: 14px 8px;
+      padding: 16px 8px;
       border-radius: 11px;
       background: #145b3b;
       text-align: center;
@@ -135,18 +96,45 @@
     }
 
     .tile .label { color: #bfddca; font-size: 14px; }
-    .tile .value { margin-top: 6px; font-size: 23px; font-weight: 700; }
+    .tile .value { margin-top: 7px; font-size: 25px; font-weight: 700; }
+
+
+    .feature {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 11px;
+      background: #145b3b;
+      text-align: center;
+      border: 1px solid #2b7652;
+    }
+
+
+    .feature-label { color: #bfddca; font-size: 15px; }
+    .feature-value { margin-top: 6px; font-size: 29px; font-weight: 700; }
+
+
+    .news-list { margin: 0; padding: 0; list-style: none; }
+    .news-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid #347255;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+    .news-list li:first-child { padding-top: 0; }
+    .news-list li:last-child { border-bottom: 0; }
+
+
     .fpl-name { margin: 16px 0 4px; font-size: 21px; font-weight: 700; }
-    .fpl-manager { color: #c2ddcb; font-size: 15px; }
-    .fpl-status { margin-top: 12px; color: #d7ecde; font-size: 14px; }
+    .fpl-status { margin-top: 10px; color: #d7ecde; font-size: 14px; }
     .footer { color: #a7cdb7; text-align: center; font-size: 13px; }
-    .error { color: #ffd18a; font-size: 16px; line-height: 1.4; }
+    .error { color: #ffd18a; }
+
+
     @media (max-width: 900px) {
       body { padding: 8px; zoom: 1; }
       .header, .row { display: block; }
       .time-wrap { margin-top: 15px; text-align: left; }
       .col { width: 100%; margin-bottom: 14px; }
-      #clock { font-size: 40px; }
     }
   </style>
 </head>
@@ -167,19 +155,24 @@
       <div class="row">
         <section class="col">
           <div class="card">
-            <h2>Burton-on-Trent weather</h2>
-            <div id="weather-content">
-              <div class="weather-main">
-                <div id="weather-icon">...</div>
-                <div>
-                  <div id="temperature">--°C</div>
-                  <div id="weather-description">Loading current weather...</div>
-                </div>
+            <h2>Today</h2>
+            <div class="tile-row">
+              <div class="tile">
+                <div class="label">Week number</div>
+                <div id="week-number" class="value">--</div>
               </div>
-              <div class="weather-details">
-                <div>Feels like: <strong id="feels-like">--°C</strong></div>
-                <div>Wind: <strong id="wind-speed">-- mph</strong></div>
+              <div class="tile">
+                <div class="label">Day of year</div>
+                <div id="day-number" class="value">--</div>
               </div>
+              <div class="tile">
+                <div class="label">Days to Christmas</div>
+                <div id="christmas-countdown" class="value">--</div>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-label">Current date</div>
+              <div id="large-date" class="feature-value">Loading...</div>
             </div>
           </div>
         </section>
@@ -201,39 +194,42 @@
             <div class="tile-row">
               <div class="tile">
                 <div class="label">Total points</div>
-                <div id="fpl-points" class="value">--</div>
+                <div class="value">CHANGE</div>
               </div>
               <div class="tile">
                 <div class="label">Last GW</div>
-                <div id="fpl-lastgw" class="value">--</div>
+                <div class="value">CHANGE</div>
               </div>
               <div class="tile">
-                <div class="label">Gameweek</div>
-                <div id="fpl-gameweek" class="value">--</div>
+                <div class="label">Overall rank</div>
+                <div class="value">CHANGE</div>
               </div>
             </div>
-            <div id="fpl-team-name" class="fpl-name">Loading FPL team...</div>
-            <div id="fpl-manager-name" class="fpl-manager"></div>
-            <div id="fpl-status" class="fpl-status">Team ID: 9473645</div>
+            <div class="fpl-name">Simon's FPL Team</div>
+            <div class="fpl-status">Edit the three CHANGE values in index.html after each gameweek.</div>
           </div>
         </section>
 
         <section class="col">
           <div class="card">
-            <h2>Useful information</h2>
+            <h2>Dashboard information</h2>
             <div class="tile-row">
               <div class="tile">
-                <div class="label">Week number</div>
-                <div id="week-number" class="value">--</div>
-              </div>
-              <div class="tile">
-                <div class="label">Day of year</div>
-                <div id="day-number" class="value">--</div>
+                <div class="label">News refresh</div>
+                <div class="value">1 min</div>
               </div>
               <div class="tile">
                 <div class="label">Next refresh</div>
-                <div id="refresh-countdown" class="value">15:00</div>
+                <div id="refresh-countdown" class="value">01:00</div>
               </div>
+              <div class="tile">
+                <div class="label">Display</div>
+                <div class="value">Live</div>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-label">Dashboard status</div>
+              <div id="dashboard-status" class="feature-value">Running</div>
             </div>
           </div>
         </section>
@@ -241,41 +237,21 @@
     </main>
 
     <footer class="footer">
-      Weather: Open-Meteo | News: BBC RSS | FPL team: 9473645 | Updates every 15 minutes
+      BBC headlines refresh every minute | FPL figures are maintained manually
     </footer>
   </div>
 
   <script type="text/javascript">
     (function () {
-      var REFRESH_SECONDS = 1 * 60;
+      var REFRESH_SECONDS = 60;
       var secondsRemaining = REFRESH_SECONDS;
-      var FPL_TEAM_ID = 9473645;
-      var FPL_WORKER_URL = 'https://fpl-api-worker.73rdscoutnotices.workers.dev';
-
 
       function byId(id) {
         return document.getElementById(id);
       }
 
-
       function pad(value) {
         return value < 10 ? '0' + value : String(value);
-      }
-
-      function formatNumber(value) {
-        if (value === null || typeof value === 'undefined') return '--';
-        var number = String(value);
-        return number.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      }
-
-      function updateClock() {
-        var now = new Date();
-        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-
-        byId('clock').innerHTML = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
-        byId('date').innerHTML = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
       }
 
       function getDayOfYear(date) {
@@ -291,140 +267,93 @@
         return Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
       }
 
-      function updateUsefulInfo() {
+      function getDaysToChristmas(date) {
+        var christmas = new Date(date.getFullYear(), 11, 25);
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        if (today.getTime() > christmas.getTime()) {
+          christmas = new Date(date.getFullYear() + 1, 11, 25);
+        }
+        return Math.ceil((christmas.getTime() - today.getTime()) / 86400000);
+      }
+
+      function updateTimeAndDates() {
         var now = new Date();
+        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var dateText = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+        byId('clock').innerHTML = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        byId('date').innerHTML = dateText;
+        byId('large-date').innerHTML = dateText;
         byId('week-number').innerHTML = getWeekNumber(now);
         byId('day-number').innerHTML = getDayOfYear(now);
-      }
-
-      function weatherDescription(code) {
-        var descriptions = {
-          0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Freezing fog',
-          51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
-          71:'Light snow',73:'Snow',75:'Heavy snow',80:'Light showers',81:'Showers',82:'Heavy showers',
-          95:'Thunderstorm',96:'Thunderstorm with hail',99:'Severe thunderstorm with hail'
-        };
-        return descriptions[code] || 'Current conditions';
-      }
-
-      function weatherIcon(code, isDay) {
-        if (code === 0) return isDay ? 'SUN' : 'MOON';
-        if (code === 1 || code === 2) return 'SUN/CLOUD';
-        if (code === 3) return 'CLOUD';
-        if (code === 45 || code === 48) return 'FOG';
-        if ((code >= 51 && code <= 65) || (code >= 80 && code <= 82)) return 'RAIN';
-        if (code >= 71 && code <= 75) return 'SNOW';
-        if (code >= 95) return 'STORM';
-        return 'TEMP';
-      }
-
-      function getJson(url, onSuccess, onFailure) {
-        var request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.onreadystatechange = function () {
-          if (request.readyState === 4) {
-            if (request.status >= 200 && request.status < 300) {
-              try {
-                onSuccess(JSON.parse(request.responseText));
-              } catch (error) {
-                onFailure('Invalid JSON response');
-              }
-            } else {
-              onFailure('Request failed: ' + request.status);
-            }
-          }
-        };
-        request.onerror = function () {
-          onFailure('Network error');
-        };
-        request.send(null);
-      }
-
-
-      function loadWeather() {
-        var url = 'https://api.open-meteo.com/v1/forecast' +
-          '?latitude=52.8073&longitude=-1.6430' +
-          '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day' +
-          '&temperature_unit=celsius&wind_speed_unit=mph&timezone=Europe%2FLondon';
-
-        getJson(url, function (data) {
-          var current = data.current;
-          byId('temperature').innerHTML = Math.round(current.temperature_2m) + '°C';
-          byId('feels-like').innerHTML = Math.round(current.apparent_temperature) + '°C';
-          byId('wind-speed').innerHTML = Math.round(current.wind_speed_10m) + ' mph';
-          byId('weather-description').innerHTML = weatherDescription(current.weather_code);
-          byId('weather-icon').innerHTML = weatherIcon(current.weather_code, current.is_day === 1);
-        }, function () {
-          byId('weather-content').innerHTML = '<p class="error">Weather unavailable. Retrying at the next refresh.</p>';
-        });
+        byId('christmas-countdown').innerHTML = getDaysToChristmas(now);
       }
 
       function loadNews() {
         var feed = 'https://feeds.bbci.co.uk/news/rss.xml';
         var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed);
-
-        getJson(url, function (data) {
-          var list = byId('news-list');
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.onreadystatechange = function () {
+          var data;
           var html = '';
           var count;
           var i;
-          if (!data.items || !data.items.length) {
-            throw new Error('No news');
-          }
-          count = data.items.length < 6 ? data.items.length : 6;
-          for (i = 0; i < count; i += 1) {
-            html += '<li>' + data.items[i].title + '</li>';
-          }
-          list.innerHTML = html;
-        }, function () {
-          byId('news-list').innerHTML = '<li class="error">Headlines unavailable. Retrying at the next refresh.</li>';
-        });
-      }
 
-      function displayFPL(data) {
-        byId('fpl-team-name').innerHTML = data.name || 'My FPL team';
-        byId('fpl-manager-name').innerHTML = (data.player_first_name || '') + ' ' + (data.player_last_name || '');
-        byId('fpl-points').innerHTML = formatNumber(data.summary_overall_points);
-        byId('fpl-lastgw').innerHTML = formatNumber(data.summary_event_points);
-        byId('fpl-gameweek').innerHTML = data.current_event || '--';
-        byId('fpl-status').innerHTML = 'Live FPL data | Team ID: ' + FPL_TEAM_ID;
-      }
+          if (request.readyState !== 4) return;
+          if (request.status >= 200 && request.status < 300) {
+            try {
+              data = JSON.parse(request.responseText);
 
-      function loadFPL() {
-        getJson(FPL_WORKER_URL, function (data) {
-          displayFPL(data);
-        }, function () {
-          byId('fpl-team-name').innerHTML = 'FPL data unavailable';
-          byId('fpl-manager-name').innerHTML = '';
-          byId('fpl-status').innerHTML = 'Unable to reach FPL Worker';
-        });
+
+              if (!data.items || !data.items.length) throw new Error('No headlines');
+
+
+              count = data.items.length < 6 ? data.items.length : 6;
+              for (i = 0; i < count; i += 1) {
+                html += '<li>' + data.items[i].title + '</li>';
+              }
+
+
+              byId('news-list').innerHTML = html;
+              byId('dashboard-status').innerHTML = 'Running';
+            } catch (error) {
+              byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
+            }
+          } else {
+            byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
+          }
+        };
+        request.onerror = function () {
+          byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
+        };
+        request.send(null);
       }
 
       function updateCountdown() {
         secondsRemaining -= 1;
+
+
         if (secondsRemaining <= 0) {
           secondsRemaining = REFRESH_SECONDS;
-          loadWeather();
           loadNews();
-          loadFPL();
         }
+
+
         byId('refresh-countdown').innerHTML = pad(Math.floor(secondsRemaining / 60)) + ':' + pad(secondsRemaining % 60);
       }
 
-      updateClock();
-      updateUsefulInfo();
-      byId('refresh-countdown').innerHTML = '15:00';
-      setInterval(updateClock, 1000);
+      updateTimeAndDates();
+      byId('refresh-countdown').innerHTML = '01:00';
+
+
+      setInterval(updateTimeAndDates, 1000);
       setInterval(updateCountdown, 1000);
 
-
       setTimeout(function () {
-        loadWeather();
         loadNews();
-        loadFPL();
       }, 500);
     }());
   </script>
 </body>
 </html>
-
