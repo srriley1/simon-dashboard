@@ -1,250 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00321e">
 <title>Burton Excellence Dashboard</title>
-
 <style>
-body{
-    margin:0;
-    padding:10px;
-    background:#00321e;
-    color:white;
-    font-family:Arial,sans-serif;
-    zoom:0.8;
-}
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    background:#00472b;
-    padding:15px;
-    border-left:6px solid #91d6a3;
-    border-radius:10px;
-}
-
-.card{
-    height: 100%;
-    min-height: 320px;
-    background:#0b442b;
-    padding:20px;
-    border-radius:14px;
-    margin-top:10px;
-}
-
-.row{
-    display:flex;
-    gap:10px;
-}
-
-.col{
-    flex:1;
-}
-
-.tile-row{
-    display:flex;
-    gap:10px;
-}
-
-.tile{
-    flex:1;
-    background:#145b3b;
-    padding:10px;
-    text-align:center;
-    border-radius:8px;
-}
-
-.label{
-    color:#bfddca;
-    font-size:14px;
-}
-
-.value{
-    font-size:26px;
-    font-weight:bold;
-    margin-top:5px;
-}
-
-#clock{
-    font-size:46px;
-    font-weight:bold;
-}
-
-.news li{
-    margin-bottom:16px;
-    font-size:24px;
-    line-height:1.4;
-    font-weight:bold;
-}
-
-.banner{
-    margin-top:10px;
-    background:#91d6a3;
-    color:#00321e;
-    text-align:center;
-    font-size:42px;
-    font-weight:bold;
-    padding:20px;
-    border-radius:10px;
-}
+*{box-sizing:border-box}
+html,body{width:100%;min-height:100%;margin:0;background:#00321e;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body{padding:10px;zoom:.80}
+.header{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#00472b;padding:16px 22px;border-left:7px solid #91d6a3;border-radius:12px;margin-bottom:12px}
+h1{margin:0;font-size:32px}.subtitle{color:#c2ddcb;margin-top:4px}.time{text-align:right}#clock{font-size:46px;font-weight:bold}#date{color:#c2ddcb;margin-top:4px}
+.top-row{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -6px 12px}.half{width:50%;padding:0 6px}
+.card{background:#0b442b;border:1px solid #26704b;border-radius:12px;padding:18px;min-height:230px}.card h2{margin:0 0 15px;font-size:25px}
+.tiles{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -5px}.tile{width:33.333%;margin:0 5px;background:#145b3b;border:1px solid #2b7652;border-radius:9px;padding:16px 8px;text-align:center}.label{color:#bfddca;font-size:14px}.value{font-size:28px;font-weight:bold;margin-top:7px}
+.fpl-note{margin-top:18px;color:#c2ddcb;font-size:15px}.news-card{min-height:300px;margin-bottom:12px}.news{margin:0;padding:0;list-style:none}.news li{padding:12px 4px;border-bottom:1px solid #347255;font-size:22px;line-height:1.3}.news li:last-child{border-bottom:0}.error{color:#ffd18a}
+.banner{background:#91d6a3;color:#00321e;text-align:center;font-size:46px;font-weight:bold;padding:20px 12px;border-radius:12px}
+.footer{text-align:center;color:#a7cdb7;font-size:12px;margin:9px 0}
+@media(max-width:900px){body{zoom:1}.top-row{display:block}.half{width:100%;margin-bottom:12px}.time{text-align:left;margin-top:12px}}
 </style>
 </head>
-
 <body>
+<header class="header">
+  <div><h1>Simon's Control Centre</h1><div class="subtitle">Burton Excellence Office</div></div>
+  <div class="time"><div id="clock">--:--:--</div><div id="date">Loading date...</div></div>
+</header>
 
-<div class="header">
-    <div>
-        <h1>Simon's Control Centre</h1>
-        <div>Burton Excellence Office</div>
+<div class="top-row">
+  <section class="half">
+    <div class="card">
+      <h2>Today</h2>
+      <div class="tiles">
+        <div class="tile"><div class="label">Week number</div><div id="week" class="value">--</div></div>
+        <div class="tile"><div class="label">Day of year</div><div id="day" class="value">--</div></div>
+        <div class="tile"><div class="label">Days to Christmas</div><div id="christmas" class="value">--</div></div>
+      </div>
     </div>
+  </section>
 
-    <div>
-        <div id="clock">--:--:--</div>
-        <div id="date"></div>
+  <section class="half">
+    <div class="card">
+      <h2>Fantasy Premier League</h2>
+      <div class="tiles">
+        <!-- EDIT THESE THREE VALUES AFTER EACH GAMEWEEK -->
+        <div class="tile"><div class="label">Total points</div><div class="value">624</div></div>
+        <div class="tile"><div class="label">Last GW</div><div class="value">58</div></div>
+        <div class="tile"><div class="label">Overall rank</div><div class="value">2.1M</div></div>
+      </div>
+      <div class="fpl-note">Manual FPL figures. Edit the three values in index.html after each gameweek.</div>
     </div>
+  </section>
 </div>
 
-<div class="row">
+<section class="card news-card">
+  <h2>BBC Headlines</h2>
+  <ul id="news" class="news"><li>Loading the latest headlines...</li></ul>
+</section>
 
-    <div class="col">
-        <div class="card">
-            <h2>Today</h2>
+<div class="banner">Welcome to Burton Excellence Office</div>
+<div class="footer">BBC headlines refresh every minute</div>
 
-            <div class="tile-row">
-                <div class="tile">
-                    <div class="label">Week</div>
-                    <div id="week" class="value">--</div>
-                </div>
-
-                <div class="tile">
-                    <div class="label">Day</div>
-                    <div id="day" class="value">--</div>
-                </div>
-
-                <div class="tile">
-                    <div class="label">Christmas</div>
-                    <div id="christmas" class="value">--</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Fantasy Premier League</h2>
-
-            <div class="tile-row">
-                <div class="tile">
-                    <div class="label">Total Points</div>
-                    <div class="value">624</div>
-                </div>
-
-                <div class="tile">
-                    <div class="label">Last GW</div>
-                    <div class="value">58</div>
-                </div>
-
-                <div class="tile">
-                    <div class="label">Rank</div>
-                    <div class="value">2.1M</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card">
-            <h2>BBC Headlines</h2>
-            <ul id="news" class="news">
-                <li>Loading...</li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-<div class="banner">
-    Welcome to Burton Excellence Office
-</div>
-
-<script>
-
-function pad(n){
-    return n<10 ? "0"+n : n;
-}
-
-function updateClock(){
-
-    var now = new Date();
-
-    document.getElementById("clock").innerHTML =
-        pad(now.getHours()) + ":" +
-        pad(now.getMinutes()) + ":" +
-        pad(now.getSeconds());
-
-    document.getElementById("date").innerHTML =
-        now.toDateString();
-
-    var start = new Date(now.getFullYear(),0,0);
-
-    document.getElementById("day").innerHTML =
-        Math.floor((now-start)/86400000);
-
-    var christmas = new Date(now.getFullYear(),11,25);
-
-    document.getElementById("christmas").innerHTML =
-        Math.ceil((christmas-now)/86400000);
-
-    var date = new Date(now.getTime());
-    date.setHours(0,0,0,0);
-    date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
-
-    var week1 = new Date(date.getFullYear(),0,4);
-
-    document.getElementById("week").innerHTML =
-        1 + Math.round(
-          ((date.getTime() - week1.getTime()) / 86400000
-          - 3 + ((week1.getDay() + 6) % 7)) / 7
-        );
-}
-
-function loadNews(){
-
-    var url="https://api.rss2json.com/v1/api.json?rss_url="+
-            encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
-
-    var req=new XMLHttpRequest();
-
-    req.open("GET",url,true);
-
-    req.onreadystatechange=function(){
-
-        if(req.readyState!==4) return;
-
-        if(req.status===200){
-
-            var data=JSON.parse(req.responseText);
-            var html="";
-
-            for(var i=0;i<5;i++){
-
-                html+="<li>"+data.items[i].title+"</li>";
-
-            }
-
-            document.getElementById("news").innerHTML=html;
-        }
-
+<script type="text/javascript">
+(function(){
+  var newsSeconds=60;
+  function id(x){return document.getElementById(x)}
+  function pad(n){return n<10?'0'+n:String(n)}
+  function weekNumber(d){
+    var x=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+    var day=x.getUTCDay()||7;
+    x.setUTCDate(x.getUTCDate()+4-day);
+    var start=new Date(Date.UTC(x.getUTCFullYear(),0,1));
+    return Math.ceil((((x.getTime()-start.getTime())/86400000)+1)/7);
+  }
+  function dayNumber(d){
+    var start=new Date(d.getFullYear(),0,0);
+    return Math.floor((d.getTime()-start.getTime())/86400000);
+  }
+  function daysToChristmas(d){
+    var today=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+    var christmas=new Date(d.getFullYear(),11,25);
+    if(today.getTime()>christmas.getTime()) christmas=new Date(d.getFullYear()+1,11,25);
+    return Math.ceil((christmas.getTime()-today.getTime())/86400000);
+  }
+  function updateClock(){
+    var n=new Date();
+    var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    id('clock').innerHTML=pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+    id('date').innerHTML=days[n.getDay()]+' '+n.getDate()+' '+months[n.getMonth()]+' '+n.getFullYear();
+    id('week').innerHTML=weekNumber(n);
+    id('day').innerHTML=dayNumber(n);
+    id('christmas').innerHTML=daysToChristmas(n);
+  }
+  function loadNews(){
+    var feed='https://feeds.bbci.co.uk/news/rss.xml';
+    var url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed);
+    var r=new XMLHttpRequest();
+    r.open('GET',url,true);
+    r.onreadystatechange=function(){
+      if(r.readyState!==4)return;
+      if(r.status>=200&&r.status<300){
+        try{
+          var data=JSON.parse(r.responseText),html='',count=data.items&&data.items.length<6?data.items.length:6,i;
+          if(!data.items||!data.items.length)throw new Error('No headlines');
+          for(i=0;i<count;i+=1)html+='<li>'+data.items[i].title+'</li>';
+          id('news').innerHTML=html;
+        }catch(e){id('news').innerHTML='<li class="error">Headlines unavailable.</li>'}
+      }else{id('news').innerHTML='<li class="error">Headlines unavailable.</li>'}
     };
-
-    req.send();
-}
-
-updateClock();
-loadNews();
-
-setInterval(updateClock,1000);
-setInterval(loadNews,60000);
-
+    r.onerror=function(){id('news').innerHTML='<li class="error">Headlines unavailable.</li>'};
+    r.send(null);
+  }
+  updateClock();
+  loadNews();
+  setInterval(updateClock,1000);
+  setInterval(loadNews,newsSeconds*1000);
+}());
 </script>
-
 </body>
 </html>
