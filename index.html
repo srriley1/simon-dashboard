@@ -1,422 +1,234 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#00321e">
-  <title>Simon's TV Dashboard</title>
+<meta charset="utf-8">
+<title>Burton Excellence Dashboard</title>
 
-  <style>
-    * { box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-      background: #00321e;
-      color: #f4fff8;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-    }
-
-    body {
-  padding: 10px;
-  padding-bottom: 50px;
-  zoom: 0.80;
+<style>
+body{
+    margin:0;
+    padding:10px;
+    background:#00321e;
+    color:white;
+    font-family:Arial,sans-serif;
+    zoom:0.8;
 }
 
-    .page {
-      width: 100%;
-      max-width: 1920px;
-      margin: 0 auto;
-    }
-
-    .header {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      padding: 18px 24px;
-      margin-bottom: 14px;
-      border-radius: 14px;
-      background: #00472b;
-      border-left: 7px solid #91d6a3;
-      box-shadow: 0 8px 20px rgba(0,0,0,.22);
-    }
-
-    .title { margin: 0; font-size: 32px; font-weight: 700; }
-    .subtitle { margin-top: 5px; color: #c2ddcb; font-size: 16px; }
-    .time-wrap { text-align: right; }
-    #clock { font-size: 48px; line-height: 1; font-weight: 700; }
-    #date { margin-top: 6px; color: #c2ddcb; font-size: 17px; }
-
-
-    .row {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      margin: 0 -7px 14px;
-    }
-
-    .col { width: 50%; padding: 0 7px; }
-
-
-    .card {
-      height: 100%;
-      min-height: 225px;
-      padding: 20px;
-      border-radius: 14px;
-      background: #0b442b;
-      border: 1px solid #26704b;
-      box-shadow: 0 8px 20px rgba(0,0,0,.22);
-    }
-
-    .card h2 { margin: 0 0 14px; color: #fff; font-size: 24px; }
-    .tile-row {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      margin: 0 -5px;
-    }
-
-    .tile {
-      width: 33.333%;
-      margin: 0 5px;
-      padding: 16px 8px;
-      border-radius: 11px;
-      background: #145b3b;
-      text-align: center;
-      border: 1px solid #2b7652;
-    }
-
-    .tile .label { color: #bfddca; font-size: 14px; }
-    .tile .value { margin-top: 7px; font-size: 25px; font-weight: 700; }
-
-
-    .feature {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 11px;
-      background: #145b3b;
-      text-align: center;
-      border: 1px solid #2b7652;
-    }
-
-
-    .feature-label { color: #bfddca; font-size: 15px; }
-    .feature-value { margin-top: 6px; font-size: 29px; font-weight: 700; }
-
-
-    .news-list { margin: 0; padding: 0; list-style: none; }
-    .news-list li {
-      padding: 9px 0;
-      border-bottom: 1px solid #347255;
-      font-size: 16px;
-      line-height: 1.25;
-    }
-    .news-list li:first-child { padding-top: 0; }
-    .news-list li:last-child { border-bottom: 0; }
-
-
-    .fpl-name { margin: 16px 0 4px; font-size: 21px; font-weight: 700; }
-    .fpl-status { margin-top: 10px; color: #d7ecde; font-size: 14px; }
-    .footer { color: #a7cdb7; text-align: center; font-size: 13px; }
-.error { color: #ffd18a; }
-  .ticker-wrap {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #91d6a3;
-  color: #00321e;
-  overflow: hidden;
-  height: 80px;
-  line-height: 80px;
-  font-weight: bold;
-  font-size: 42px;
-  z-index: 9999;
-}
-.ticker {
-  white-space: nowrap;
-  display: inline-block;
-  padding-left: 100%;
- animation: ticker-scroll 18s linear infinite;
+.header{
+    display:flex;
+    justify-content:space-between;
+    background:#00472b;
+    padding:15px;
+    border-left:6px solid #91d6a3;
+    border-radius:10px;
 }
 
-@keyframes ticker-scroll {
-  0% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
+.card{
+    background:#0b442b;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
 }
 
-.ticker-wrap {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #91d6a3;
-  color: #00321e;
-  overflow: hidden;
-  height: 38px;
-  line-height: 38px;
-  font-weight: bold;
-  font-size: 18px;
-  z-index: 9999;
+.row{
+    display:flex;
+    gap:10px;
 }
 
-.ticker {
-  white-space: nowrap;
-  display: inline-block;
-  padding-left: 100%;
-  animation: ticker-scroll 25s linear infinite;
+.col{
+    flex:1;
 }
 
-@keyframes ticker-scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.tile-row{
+    display:flex;
+    gap:10px;
 }
 
+.tile{
+    flex:1;
+    background:#145b3b;
+    padding:10px;
+    text-align:center;
+    border-radius:8px;
+}
 
-    @media (max-width: 900px) {
-      body { padding: 8px; zoom: 1; }
-      .header, .row { display: block; }
-      .time-wrap { margin-top: 15px; text-align: left; }
-      .col { width: 100%; margin-bottom: 14px; }
-    }
-  </style>
+.label{
+    color:#bfddca;
+    font-size:14px;
+}
+
+.value{
+    font-size:26px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+#clock{
+    font-size:46px;
+    font-weight:bold;
+}
+
+.news li{
+    margin-bottom:8px;
+}
+
+.banner{
+    margin-top:10px;
+    background:#91d6a3;
+    color:#00321e;
+    text-align:center;
+    font-size:42px;
+    font-weight:bold;
+    padding:20px;
+    border-radius:10px;
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <header class="header">
-      <div>
-        <h1 class="title">Simon's Control Centre</h1>
-        <div class="subtitle">Live home dashboard</div>
-      </div>
-      <div class="time-wrap">
+
+<div class="header">
+    <div>
+        <h1>Simon's Control Centre</h1>
+        <div>Burton Excellence Office</div>
+    </div>
+
+    <div>
         <div id="clock">--:--:--</div>
-        <div id="date">Loading date...</div>
-      </div>
-    </header>
+        <div id="date"></div>
+    </div>
+</div>
 
-    <main>
-      <div class="row">
-        <section class="col">
-          <div class="card">
+<div class="row">
+
+    <div class="col">
+        <div class="card">
             <h2>Today</h2>
+
             <div class="tile-row">
-              <div class="tile">
-                <div class="label">Week number</div>
-                <div id="week-number" class="value">--</div>
-              </div>
-              <div class="tile">
-                <div class="label">Day of year</div>
-                <div id="day-number" class="value">--</div>
-              </div>
-              <div class="tile">
-                <div class="label">Days to Christmas</div>
-                <div id="christmas-countdown" class="value">--</div>
-              </div>
-            </div>
-            <div class="feature">
-              <div class="feature-label">Current date</div>
-              <div id="large-date" class="feature-value">Loading...</div>
-            </div>
-          </div>
-        </section>
+                <div class="tile">
+                    <div class="label">Week</div>
+                    <div id="week" class="value">--</div>
+                </div>
 
-        <section class="col">
-          <div class="card">
-            <h2>BBC News headlines</h2>
-            <ul id="news-list" class="news-list">
-              <li>Loading the latest headlines...</li>
-            </ul>
-          </div>
-        </section>
-      </div>
+                <div class="tile">
+                    <div class="label">Day</div>
+                    <div id="day" class="value">--</div>
+                </div>
 
-      <div class="row">
-        <section class="col">
-          <div class="card">
+                <div class="tile">
+                    <div class="label">Christmas</div>
+                    <div id="christmas" class="value">--</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
             <h2>Fantasy Premier League</h2>
+
             <div class="tile-row">
-              <div class="tile">
-                <div class="label">Total points</div>
-                <div class="value">369</div>
-              </div>
-              <div class="tile">
-                <div class="label">Last GW</div>
-                <div class="value">36</div>
-              </div>
-              <div class="tile">
-                <div class="label">Overall rank</div>
-                <div class="value">7479100</div>
-              </div>
+                <div class="tile">
+                    <div class="label">Total Points</div>
+                    <div class="value">624</div>
+                </div>
+
+                <div class="tile">
+                    <div class="label">Last GW</div>
+                    <div class="value">58</div>
+                </div>
+
+                <div class="tile">
+                    <div class="label">Rank</div>
+                    <div class="value">2.1M</div>
+                </div>
             </div>
-            <div class="fpl-name">Simon's FPL Team</div>
-            <div class="fpl-status">Edit the three CHANGE values in index.html after each gameweek.</div>
-          </div>
-        </section>
+        </div>
+    </div>
 
-        <section class="col">
-          <div class="card">
-            <h2>Dashboard information</h2>
-            <div class="tile-row">
-              <div class="tile">
-                <div class="label">News refresh</div>
-                <div class="value">1 min</div>
-              </div>
-              <div class="tile">
-                <div class="label">Next refresh</div>
-                <div id="refresh-countdown" class="value">01:00</div>
-              </div>
-              <div class="tile">
-                <div class="label">Display</div>
-                <div class="value">Live</div>
-              </div>
-            </div>
-            <div class="feature">
-              <div class="feature-label">Dashboard status</div>
-              <div id="dashboard-status" class="feature-value">Running</div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
+    <div class="col">
+        <div class="card">
+            <h2>BBC Headlines</h2>
+            <ul id="news" class="news">
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </div>
 
-    <footer class="footer">
-      BBC headlines refresh every minute | FPL figures are maintained manually
-      Welcome to Burton Excellence Office • Safety First • Continuous Improvement • Problem Solving • Teamwork • Every Problem Is An Opportunity • Excellence Every Day
-    </footer>
-  </div>
+</div>
 
-  <script type="text/javascript">
-    (function () {
-      var REFRESH_SECONDS = 60;
-      var secondsRemaining = REFRESH_SECONDS;
+<div class="banner">
+    Welcome to Burton Excellence Office
+</div>
 
-      function byId(id) {
-        return document.getElementById(id);
-      }
+<script>
 
-      function pad(value) {
-        return value < 10 ? '0' + value : String(value);
-      }
+function pad(n){
+    return n<10 ? "0"+n : n;
+}
 
-      function getDayOfYear(date) {
-        var start = new Date(date.getFullYear(), 0, 0);
-        return Math.floor((date.getTime() - start.getTime()) / 86400000);
-      }
+function updateClock(){
 
-      function getWeekNumber(date) {
-        var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-        var day = d.getUTCDay() || 7;
-        d.setUTCDate(d.getUTCDate() + 4 - day);
-        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        return Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
-      }
+    var now=new Date();
 
-      function getDaysToChristmas(date) {
-        var christmas = new Date(date.getFullYear(), 11, 25);
-        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-        if (today.getTime() > christmas.getTime()) {
-          christmas = new Date(date.getFullYear() + 1, 11, 25);
-        }
-        return Math.ceil((christmas.getTime() - today.getTime()) / 86400000);
-      }
+    document.getElementById("clock").innerHTML=
+        pad(now.getHours())+":"+
+        pad(now.getMinutes())+":"+
+        pad(now.getSeconds());
 
-      function updateTimeAndDates() {
-        var now = new Date();
-        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        var dateText = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
-        byId('clock').innerHTML = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
-        byId('date').innerHTML = dateText;
-        byId('large-date').innerHTML = dateText;
-        byId('week-number').innerHTML = getWeekNumber(now);
-        byId('day-number').innerHTML = getDayOfYear(now);
-        byId('christmas-countdown').innerHTML = getDaysToChristmas(now);
-      }
+    document.getElementById("date").innerHTML=
+        now.toDateString();
 
-      function loadNews() {
-        var feed = 'https://feeds.bbci.co.uk/news/rss.xml';
-        var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed);
-        var request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.onreadystatechange = function () {
-          var data;
-          var html = '';
-          var count;
-          var i;
+    var start=new Date(now.getFullYear(),0,0);
 
-          if (request.readyState !== 4) return;
-          if (request.status >= 200 && request.status < 300) {
-            try {
-              data = JSON.parse(request.responseText);
+    document.getElementById("day").innerHTML=
+        Math.floor((now-start)/86400000);
 
+    var christmas=new Date(now.getFullYear(),11,25);
 
-              if (!data.items || !data.items.length) throw new Error('No headlines');
+    document.getElementById("christmas").innerHTML=
+        Math.ceil((christmas-now)/86400000);
 
+}
 
-              count = data.items.length < 6 ? data.items.length : 6;
-              for (i = 0; i < count; i += 1) {
-                html += '<li>' + data.items[i].title + '</li>';
-              }
+function loadNews(){
 
+    var url="https://api.rss2json.com/v1/api.json?rss_url="+
+            encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
 
-              byId('news-list').innerHTML = html;
-              byId('dashboard-status').innerHTML = 'Running';
-            } catch (error) {
-              byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
+    var req=new XMLHttpRequest();
+
+    req.open("GET",url,true);
+
+    req.onreadystatechange=function(){
+
+        if(req.readyState!==4) return;
+
+        if(req.status===200){
+
+            var data=JSON.parse(req.responseText);
+            var html="";
+
+            for(var i=0;i<5;i++){
+
+                html+="<li>"+data.items[i].title+"</li>";
+
             }
-          } else {
-            byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
-          }
-        };
-        request.onerror = function () {
-          byId('news-list').innerHTML = '<li class="error">Headlines unavailable.</li>';
-        };
-        request.send(null);
-      }
 
-      function updateCountdown() {
-        secondsRemaining -= 1;
-
-
-        if (secondsRemaining <= 0) {
-          secondsRemaining = REFRESH_SECONDS;
-          loadNews();
+            document.getElementById("news").innerHTML=html;
         }
 
+    };
 
-        byId('refresh-countdown').innerHTML = pad(Math.floor(secondsRemaining / 60)) + ':' + pad(secondsRemaining % 60);
-      }
+    req.send();
+}
 
-      updateTimeAndDates();
-      byId('refresh-countdown').innerHTML = '01:00';
+updateClock();
+loadNews();
 
+setInterval(updateClock,1000);
+setInterval(loadNews,60000);
 
-      setInterval(updateTimeAndDates, 1000);
-      setInterval(updateCountdown, 1000);
+</script>
 
-      setTimeout(function () {
-        loadNews();
-      }, 500);
-    }());
-  </script>
 </body>
 </html>
