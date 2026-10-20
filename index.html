@@ -1,1 +1,555 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <title>Simon's TV Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #07111f;
+      color: #f7fafc;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding: 24px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 22px 28px;
+      margin-bottom: 20px;
+      border-radius: 18px;
+      background: #0c2038;
+      border-left: 8px solid #16a085;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 7px;
+      color: #a9bed3;
+      font-size: 17px;
+    }
+
+    .time-wrap {
+      text-align: right;
+    }
+
+    #clock {
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    #date {
+      margin-top: 8px;
+      color: #b9cade;
+      font-size: 18px;
+    }
+
+    .row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 -10px 20px;
+    }
+
+    .col {
+      width: 50%;
+      padding: 0 10px;
+    }
+
+    .card {
+      height: 100%;
+      min-height: 270px;
+      padding: 24px;
+      border-radius: 18px;
+      background: #10253e;
+      border: 1px solid #1e3b59;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .card h2 {
+      margin: 0 0 18px;
+      color: #ffffff;
+      font-size: 27px;
+    }
+
+    .weather-main {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    #weather-icon {
+      width: 90px;
+      font-size: 74px;
+      line-height: 1;
+    }
+
+    #temperature {
+      font-size: 66px;
+      font-weight: 700;
+    }
+
+    #weather-description {
+      margin-top: 8px;
+      color: #c7d8e8;
+      font-size: 22px;
+    }
+
+    .weather-details {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 24px;
+      color: #d8e5ef;
+      font-size: 18px;
+    }
+
+    .weather-details div {
+      margin-right: 34px;
+    }
+
+    .news-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .news-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid #29445f;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .news-list li:first-child {
+      padding-top: 0;
+    }
+
+    .news-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .news-list a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .status-line {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      margin: 17px 0;
+      font-size: 19px;
+    }
+
+    .dot {
+      width: 13px;
+      height: 13px;
+      margin-right: 12px;
+      border-radius: 50%;
+      background: #7f8c8d;
+    }
+
+    .dot.good {
+      background: #2ecc71;
+      box-shadow: 0 0 12px rgba(46, 204, 113, 0.75);
+    }
+
+    .dot.bad {
+      background: #e74c3c;
+      box-shadow: 0 0 12px rgba(231, 76, 60, 0.7);
+    }
+
+    .tile-row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 -7px;
+    }
+
+    .tile {
+      width: 33.333%;
+      margin: 0 7px;
+      padding: 18px 12px;
+      border-radius: 14px;
+      background: #17324f;
+      text-align: center;
+    }
+
+    .tile .label {
+      color: #a9bfd3;
+      font-size: 15px;
+    }
+
+    .tile .value {
+      margin-top: 8px;
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .footer {
+      color: #7890a8;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .error {
+      color: #ffcc80;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 12px;
+      }
+
+      .header,
+      .row {
+        display: block;
+      }
+
+      .time-wrap {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .col {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      #clock {
+        font-size: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <h1 class="title">Simon's Control Centre</h1>
+        <div class="subtitle">Live home dashboard</div>
+      </div>
+      <div class="time-wrap">
+        <div id="clock">--:--</div>
+        <div id="date">Loading date...</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row">
+        <section class="col">
+          <div class="card">
+            <h2>Burton-on-Trent weather</h2>
+            <div id="weather-content">
+              <div class="weather-main">
+                <div id="weather-icon">⏳</div>
+                <div>
+                  <div id="temperature">--°C</div>
+                  <div id="weather-description">Loading current weather...</div>
+                </div>
+              </div>
+              <div class="weather-details">
+                <div>Feels like: <strong id="feels-like">--°C</strong></div>
+                <div>Wind: <strong id="wind-speed">-- mph</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="col">
+          <div class="card">
+            <h2>BBC News headlines</h2>
+            <ul id="news-list" class="news-list">
+              <li>Loading the latest headlines...</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="row">
+        <section class="col">
+          <div class="card">
+            <h2>Dashboard status</h2>
+            <div class="status-line">
+              <span id="internet-dot" class="dot"></span>
+              <span id="internet-status">Checking internet connection...</span>
+            </div>
+            <div class="status-line">
+              <span id="weather-dot" class="dot"></span>
+              <span id="weather-status">Waiting for weather update...</span>
+            </div>
+            <div class="status-line">
+              <span id="news-dot" class="dot"></span>
+              <span id="news-status">Waiting for news update...</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="col">
+          <div class="card">
+            <h2>Useful information</h2>
+            <div class="tile-row">
+              <div class="tile">
+                <div class="label">Week number</div>
+                <div id="week-number" class="value">--</div>
+              </div>
+              <div class="tile">
+                <div class="label">Day of year</div>
+                <div id="day-number" class="value">--</div>
+              </div>
+              <div class="tile">
+                <div class="label">Next refresh</div>
+                <div id="refresh-countdown" class="value">--:--</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      Weather: Open-Meteo · News: BBC RSS via rss2json · Updates every 15 minutes
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var REFRESH_SECONDS = 15 * 60;
+      var secondsRemaining = REFRESH_SECONDS;
+
+      function pad(value) {
+        return value < 10 ? '0' + value : String(value);
+      }
+
+      function updateClock() {
+        var now = new Date();
+        var time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        var dateOptions = {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        };
+
+        document.getElementById('clock').textContent = time;
+        document.getElementById('date').textContent = now.toLocaleDateString('en-GB', dateOptions);
+      }
+
+      function getDayOfYear(date) {
+        var start = new Date(date.getFullYear(), 0, 0);
+        var difference = date - start;
+        return Math.floor(difference / 86400000);
+      }
+
+      function getWeekNumber(date) {
+        var workingDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        var day = workingDate.getUTCDay() || 7;
+        workingDate.setUTCDate(workingDate.getUTCDate() + 4 - day);
+        var yearStart = new Date(Date.UTC(workingDate.getUTCFullYear(), 0, 1));
+        return Math.ceil((((workingDate - yearStart) / 86400000) + 1) / 7);
+      }
+
+      function updateUsefulInfo() {
+        var now = new Date();
+        document.getElementById('week-number').textContent = getWeekNumber(now);
+        document.getElementById('day-number').textContent = getDayOfYear(now);
+      }
+
+      function setStatus(name, success, text) {
+        var dot = document.getElementById(name + '-dot');
+        var label = document.getElementById(name + '-status');
+        dot.className = 'dot ' + (success ? 'good' : 'bad');
+        label.textContent = text;
+      }
+
+      function weatherDescription(code) {
+        var descriptions = {
+          0: 'Clear sky',
+          1: 'Mainly clear',
+          2: 'Partly cloudy',
+          3: 'Overcast',
+          45: 'Foggy',
+          48: 'Freezing fog',
+          51: 'Light drizzle',
+          53: 'Drizzle',
+          55: 'Heavy drizzle',
+          61: 'Light rain',
+          63: 'Rain',
+          65: 'Heavy rain',
+          71: 'Light snow',
+          73: 'Snow',
+          75: 'Heavy snow',
+          80: 'Light showers',
+          81: 'Showers',
+          82: 'Heavy showers',
+          95: 'Thunderstorm',
+          96: 'Thunderstorm with hail',
+          99: 'Severe thunderstorm with hail'
+        };
+        return descriptions[code] || 'Current conditions';
+      }
+
+      function weatherIcon(code, isDay) {
+        if (code === 0) return isDay ? '☀️' : '🌙';
+        if (code === 1 || code === 2) return isDay ? '🌤️' : '☁️';
+        if (code === 3) return '☁️';
+        if (code === 45 || code === 48) return '🌫️';
+        if ((code >= 51 && code <= 65) || (code >= 80 && code <= 82)) return '🌧️';
+        if (code >= 71 && code <= 75) return '🌨️';
+        if (code >= 95) return '⛈️';
+        return '🌡️';
+      }
+
+      function loadWeather() {
+        var weatherUrl = 'https://api.open-meteo.com/v1/forecast' +
+          '?latitude=52.8073' +
+          '&longitude=-1.6430' +
+          '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day' +
+          '&temperature_unit=celsius' +
+          '&wind_speed_unit=mph' +
+          '&timezone=Europe%2FLondon';
+
+        fetch(weatherUrl)
+          .then(function (response) {
+            if (!response.ok) throw new Error('Weather request failed');
+            return response.json();
+          })
+          .then(function (data) {
+            var current = data.current;
+            document.getElementById('temperature').textContent = Math.round(current.temperature_2m) + '°C';
+            document.getElementById('feels-like').textContent = Math.round(current.apparent_temperature) + '°C';
+            document.getElementById('wind-speed').textContent = Math.round(current.wind_speed_10m) + ' mph';
+            document.getElementById('weather-description').textContent = weatherDescription(current.weather_code);
+            document.getElementById('weather-icon').textContent = weatherIcon(current.weather_code, current.is_day === 1);
+            setStatus('weather', true, 'Weather updated successfully');
+          })
+          .catch(function () {
+            document.getElementById('weather-content').innerHTML =
+              '<p class="error">Weather could not be loaded. The dashboard will try again at the next refresh.</p>';
+            setStatus('weather', false, 'Weather feed unavailable');
+          });
+      }
+
+      function loadNews() {
+        var bbcFeed = 'https://feeds.bbci.co.uk/news/rss.xml';
+        var newsUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(bbcFeed);
+
+        fetch(newsUrl)
+          .then(function (response) {
+            if (!response.ok) throw new Error('News request failed');
+            return response.json();
+          })
+          .then(function (data) {
+            if (data.status !== 'ok' || !data.items || !data.items.length) {
+              throw new Error('No news items returned');
+            }
+
+            var list = document.getElementById('news-list');
+            list.innerHTML = '';
+
+            var count = Math.min(data.items.length, 6);
+            for (var i = 0; i < count; i += 1) {
+              var item = data.items[i];
+              var listItem = document.createElement('li');
+              var link = document.createElement('a');
+              link.href = item.link;
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              link.textContent = item.title;
+              listItem.appendChild(link);
+              list.appendChild(listItem);
+            }
+
+            setStatus('news', true, 'News updated successfully');
+          })
+          .catch(function () {
+            document.getElementById('news-list').innerHTML =
+              '<li class="error">Headlines could not be loaded. The dashboard will try again at the next refresh.</li>';
+            setStatus('news', false, 'News feed unavailable');
+          });
+      }
+
+      function updateConnectionStatus() {
+        if (navigator.onLine) {
+          setStatus('internet', true, 'TV is connected to the internet');
+        } else {
+          setStatus('internet', false, 'No internet connection detected');
+        }
+      }
+
+      function updateCountdown() {
+        secondsRemaining -= 1;
+        if (secondsRemaining <= 0) {
+          window.location.reload();
+          return;
+        }
+
+        var minutes = Math.floor(secondsRemaining / 60);
+        var seconds = secondsRemaining % 60;
+        document.getElementById('refresh-countdown').textContent = pad(minutes) + ':' + pad(seconds);
+      }
+
+      updateClock();
+      updateUsefulInfo();
+      updateConnectionStatus();
+      loadWeather();
+      loadNews();
+      document.getElementById('refresh-countdown').textContent = '15:00';
+
+      setInterval(updateClock, 1000);
+      setInterval(updateCountdown, 1000);
+      window.addEventListener('online', updateConnectionStatus);
+      window.addEventListener('offline', updateConnectionStatus);
+    }());
+  </script>
+</body>
+</html>
+
