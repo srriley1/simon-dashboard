@@ -1,9 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#00321e">
   <title>Simon's TV Dashboard</title>
@@ -12,7 +8,9 @@
     * { box-sizing: border-box; }
 
     html, body {
-      width: 100%; min-height: 100%; margin: 0;
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
       background: #00321e;
       color: #f4fff8;
       font-family: Arial, Helvetica, sans-serif;
@@ -23,10 +21,17 @@
     .page { width: 100%; max-width: 1920px; margin: 0 auto; }
 
     .header {
-      display: -webkit-box; display: -ms-flexbox; display: flex;
-      -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;
-      -webkit-box-align: center; -ms-flex-align: center; align-items: center;
-      padding: 22px 28px; margin-bottom: 20px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 22px 28px;
+      margin-bottom: 20px;
       border-radius: 18px;
       background: #00472b;
       border-left: 8px solid #91d6a3;
@@ -40,51 +45,89 @@
     #date { margin-top: 8px; color: #c2ddcb; font-size: 18px; }
 
     .row {
-      display: -webkit-box; display: -ms-flexbox; display: flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
       margin: 0 -10px 20px;
     }
+
+
     .col { width: 50%; padding: 0 10px; }
 
     .card {
-      height: 100%; min-height: 270px; padding: 24px;
+      height: 100%;
+      min-height: 270px;
+      padding: 24px;
       border-radius: 18px;
       background: #0b442b;
       border: 1px solid #26704b;
       box-shadow: 0 12px 28px rgba(0,0,0,.22);
     }
+
+
     .card h2 { margin: 0 0 18px; color: #fff; font-size: 27px; }
 
     .weather-main {
-      display: -webkit-box; display: -ms-flexbox; display: flex;
-      -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
     }
+
+
     #weather-icon { width: 90px; font-size: 74px; line-height: 1; }
     #temperature { font-size: 66px; font-weight: 700; }
     #weather-description { margin-top: 8px; color: #d7ecde; font-size: 22px; }
+
+
     .weather-details {
-      display: -webkit-box; display: -ms-flexbox; display: flex;
-      margin-top: 24px; color: #e1f1e7; font-size: 18px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 24px;
+      color: #e1f1e7;
+      font-size: 18px;
     }
+
+
     .weather-details div { margin-right: 34px; }
 
     .news-list { margin: 0; padding: 0; list-style: none; }
+
+
     .news-list li {
-      padding: 13px 0; border-bottom: 1px solid #347255;
-      font-size: 18px; line-height: 1.35;
+      padding: 13px 0;
+      border-bottom: 1px solid #347255;
+      font-size: 18px;
+      line-height: 1.35;
     }
+
+
     .news-list li:first-child { padding-top: 0; }
     .news-list li:last-child { border-bottom: 0; }
     .news-list a { color: #fff; text-decoration: none; }
 
     .tile-row {
-      display: -webkit-box; display: -ms-flexbox; display: flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
       margin: 0 -7px;
     }
+
+
     .tile {
-      width: 33.333%; margin: 0 7px; padding: 18px 10px;
-      border-radius: 14px; background: #145b3b; text-align: center;
+      width: 33.333%;
+      margin: 0 7px;
+      padding: 18px 10px;
+      border-radius: 14px;
+      background: #145b3b;
+      text-align: center;
       border: 1px solid #2b7652;
     }
+
+
     .tile .label { color: #bfddca; font-size: 15px; }
     .tile .value { margin-top: 8px; font-size: 25px; font-weight: 700; }
 
@@ -206,8 +249,12 @@
       var REFRESH_SECONDS = 15 * 60;
       var secondsRemaining = REFRESH_SECONDS;
       var FPL_TEAM_ID = 9473645;
+      var FPL_WORKER_URL = 'https://fpl-api-worker.73rdscoutnotices.workers.dev';
+      function pad(value) {
+        return value < 10 ? '0' + value : String(value);
+      }
 
-      function pad(value) { return value < 10 ? '0' + value : String(value); }
+
       function formatNumber(value) {
         if (value === null || value === undefined) return '--';
         return Number(value).toLocaleString('en-GB');
@@ -218,7 +265,10 @@
         document.getElementById('clock').textContent =
           pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
         document.getElementById('date').textContent = now.toLocaleDateString('en-GB', {
-          weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
         });
       }
 
@@ -243,10 +293,27 @@
 
       function weatherDescription(code) {
         var descriptions = {
-          0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Freezing fog',
-          51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
-          71:'Light snow',73:'Snow',75:'Heavy snow',80:'Light showers',81:'Showers',82:'Heavy showers',
-          95:'Thunderstorm',96:'Thunderstorm with hail',99:'Severe thunderstorm with hail'
+          0: 'Clear sky',
+          1: 'Mainly clear',
+          2: 'Partly cloudy',
+          3: 'Overcast',
+          45: 'Foggy',
+          48: 'Freezing fog',
+          51: 'Light drizzle',
+          53: 'Drizzle',
+          55: 'Heavy drizzle',
+          61: 'Light rain',
+          63: 'Rain',
+          65: 'Heavy rain',
+          71: 'Light snow',
+          73: 'Snow',
+          75: 'Heavy snow',
+          80: 'Light showers',
+          81: 'Showers',
+          82: 'Heavy showers',
+          95: 'Thunderstorm',
+          96: 'Thunderstorm with hail',
+          99: 'Severe thunderstorm with hail'
         };
         return descriptions[code] || 'Current conditions';
       }
@@ -268,47 +335,61 @@
           '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day' +
           '&temperature_unit=celsius&wind_speed_unit=mph&timezone=Europe%2FLondon';
 
-        fetch(url).then(function (r) {
-          if (!r.ok) throw new Error('Weather request failed');
-          return r.json();
-        }).then(function (data) {
-          var c = data.current;
-          document.getElementById('temperature').textContent = Math.round(c.temperature_2m) + '°C';
-          document.getElementById('feels-like').textContent = Math.round(c.apparent_temperature) + '°C';
-          document.getElementById('wind-speed').textContent = Math.round(c.wind_speed_10m) + ' mph';
-          document.getElementById('weather-description').textContent = weatherDescription(c.weather_code);
-          document.getElementById('weather-icon').textContent = weatherIcon(c.weather_code, c.is_day === 1);
-        }).catch(function () {
-          document.getElementById('weather-content').innerHTML =
-            '<p class="error">Weather could not be loaded. It will retry at the next refresh.</p>';
-        });
+        fetch(url)
+          .then(function (response) {
+            if (!response.ok) throw new Error('Weather request failed');
+            return response.json();
+          })
+          .then(function (data) {
+            var current = data.current;
+            document.getElementById('temperature').textContent = Math.round(current.temperature_2m) + '°C';
+            document.getElementById('feels-like').textContent = Math.round(current.apparent_temperature) + '°C';
+            document.getElementById('wind-speed').textContent = Math.round(current.wind_speed_10m) + ' mph';
+            document.getElementById('weather-description').textContent = weatherDescription(current.weather_code);
+            document.getElementById('weather-icon').textContent = weatherIcon(current.weather_code, current.is_day === 1);
+          })
+          .catch(function (error) {
+            console.log('Weather error:', error);
+            document.getElementById('weather-content').innerHTML =
+              '<p class="error">Weather could not be loaded. It will retry at the next refresh.</p>';
+          });
       }
 
       function loadNews() {
         var feed = 'https://feeds.bbci.co.uk/news/rss.xml';
         var url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed);
 
-        fetch(url).then(function (r) {
-          if (!r.ok) throw new Error('News request failed');
-          return r.json();
-        }).then(function (data) {
-          if (data.status !== 'ok' || !data.items || !data.items.length) throw new Error('No news');
-          var list = document.getElementById('news-list');
-          list.innerHTML = '';
-          for (var i = 0; i < Math.min(data.items.length, 6); i += 1) {
-            var li = document.createElement('li');
-            var a = document.createElement('a');
-            a.href = data.items[i].link;
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
-            a.textContent = data.items[i].title;
-            li.appendChild(a);
-            list.appendChild(li);
-          }
-        }).catch(function () {
-          document.getElementById('news-list').innerHTML =
-            '<li class="error">Headlines could not be loaded. They will retry at the next refresh.</li>';
-        });
+        fetch(url)
+          .then(function (response) {
+            if (!response.ok) throw new Error('News request failed');
+            return response.json();
+          })
+          .then(function (data) {
+            if (data.status !== 'ok' || !data.items || !data.items.length) {
+              throw new Error('No news returned');
+            }
+
+
+            var list = document.getElementById('news-list');
+            list.innerHTML = '';
+
+
+            for (var i = 0; i < Math.min(data.items.length, 6); i += 1) {
+              var listItem = document.createElement('li');
+              var link = document.createElement('a');
+              link.href = data.items[i].link;
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              link.textContent = data.items[i].title;
+              listItem.appendChild(link);
+              list.appendChild(listItem);
+            }
+          })
+          .catch(function (error) {
+            console.log('News error:', error);
+            document.getElementById('news-list').innerHTML =
+              '<li class="error">Headlines could not be loaded. They will retry at the next refresh.</li>';
+          });
       }
 
       function displayFPL(data) {
@@ -318,43 +399,37 @@
         document.getElementById('fpl-points').textContent = formatNumber(data.summary_overall_points);
         document.getElementById('fpl-lastgw').textContent = formatNumber(data.summary_event_points);
         document.getElementById('fpl-gameweek').textContent = data.current_event || '--';
-        document.getElementById('fpl-status').textContent = 'Live FPL data | Team ID: ' + FPL_TEAM_ID;
+        document.getElementById('fpl-status').textContent =
+          'Live FPL data | Team ID: ' + FPL_TEAM_ID;
       }
 
-     function loadFPL() {
-
-  fetch('https://fpl-api-worker.73rdscoutnotices.workers.dev')
-
-    .then(function(response) {
-
-      if (!response.ok) {
-        throw new Error('Worker request failed');
+      function loadFPL() {
+        fetch(FPL_WORKER_URL)
+          .then(function (response) {
+            if (!response.ok) throw new Error('Worker request failed');
+            return response.json();
+          })
+          .then(function (data) {
+            displayFPL(data);
+          })
+          .catch(function (error) {
+            console.log('FPL error:', error);
+            document.getElementById('fpl-team-name').textContent = 'FPL data unavailable';
+            document.getElementById('fpl-manager-name').textContent = '';
+            document.getElementById('fpl-status').textContent = 'Unable to reach FPL Worker';
+          });
       }
-
-      return response.json();
-    })
-
-    .then(displayFPL)
-
-    .catch(function(error) {
-
-      console.log(error);
-
-      document.getElementById('fpl-team-name').textContent =
-        'FPL data unavailable';
-
-      document.getElementById('fpl-manager-name').textContent =
-        '';
-
-      document.getElementById('fpl-status').textContent =
-        'Unable to reach FPL Worker';
-
-    });
-}
 
       function updateCountdown() {
         secondsRemaining -= 1;
-        if (secondsRemaining <= 0) { window.location.reload(); return; }
+
+
+        if (secondsRemaining <= 0) {
+          window.location.reload();
+          return;
+        }
+
+
         document.getElementById('refresh-countdown').textContent =
           pad(Math.floor(secondsRemaining / 60)) + ':' + pad(secondsRemaining % 60);
       }
@@ -365,9 +440,12 @@
       loadNews();
       loadFPL();
       document.getElementById('refresh-countdown').textContent = '15:00';
+
+
       setInterval(updateClock, 1000);
       setInterval(updateCountdown, 1000);
     }());
   </script>
 </body>
 </html>
+
